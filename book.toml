@@ -1,0 +1,10 @@
+[book]
+title = "d77void Immutable Docs"
+authors = ["Daniel Azevedo and contributors"]
+language = "en"
+src = "src"
+
+[build]
+# A link in SUMMARY.md to a page that does not exist is an error, not a
+# silently created empty page.
+create-missing = false
