@@ -30,6 +30,14 @@ A link in `SUMMARY.md` to a page that does not exist stops the build
   installation. What is not verified yet says so.
 - The documentation shows commands; nothing here runs them.
 
+## SourceForge wiki
+
+On every change to `src/` on `main`, the workflow `wiki.yml` copies the pages
+to the [d77void wiki on SourceForge](https://sourceforge.net/p/d77void/wiki/Immutable%20Docs/)
+(`tools/sf-wiki-sync.py`, with the `SF_WIKI_TOKEN` secret). Pages are written
+here only: the wiki copy is overwritten each time. A page removed from
+`SUMMARY.md` stays on the wiki until it is deleted there by hand.
+
 ## License
 
 The documentation is licensed under

@@ -1,0 +1,23 @@
+# Copies the pages to the d77void wiki on SourceForge (tools/sf-wiki-sync.py)
+# on every change to them on main. GitHub stays the only place where pages
+# are written; the wiki copy is overwritten each time.
+name: wiki
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'tools/sf-wiki-sync.py'
+  workflow_dispatch:
+concurrency:
+  group: wiki
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy the pages to the SourceForge wiki
+        env:
+          SF_WIKI_TOKEN: ${{ secrets.SF_WIKI_TOKEN }}
+        run: python3 -I tools/sf-wiki-sync.py
