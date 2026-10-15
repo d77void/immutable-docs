@@ -1,6 +1,6 @@
 # d77void Immutable Docs
 
-Community documentation of [d77void Immutable](https://github.com/d77void/d77-immutable):
+Community documentation of d77void Immutable:
 how the system works and how to run and recover it yourself.
 
 The pages are plain Markdown in [`src/`](src/), readable on GitHub, in any
@@ -29,3 +29,9 @@ A link in `SUMMARY.md` to a page that does not exist stops the build
   checked against the system's code and, where a page says so, on a real
   installation. What is not verified yet says so.
 - The documentation shows commands; nothing here runs them.
+
+## License
+
+The documentation is licensed under
+[Creative Commons Attribution-ShareAlike 4.0 International](LICENSE)
+(CC BY-SA 4.0).

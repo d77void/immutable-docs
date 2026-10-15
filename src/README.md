@@ -26,3 +26,8 @@ d77void Immutable is not affiliated with or endorsed by the Void Linux project
 or its maintainers. For general Void Linux topics, the
 [Void Linux Handbook](https://docs.voidlinux.org/) applies; these pages only
 cover what is different here.
+
+## License
+
+This documentation is licensed under
+[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
