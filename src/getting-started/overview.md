@@ -49,35 +49,9 @@ version being started and from the persistent data on the disk:
 The kept data is the same whichever version you start: going back to the
 previous version keeps your files and settings.
 
-### What "kept" means for `/etc`
-
-`/etc` starts from the image's files. When you change a file, your copy is
-kept and **hides the image's copy from then on**, including in later
-versions. Files you never touched always follow the current image, so they
-receive the fixes each new version brings.
-
-To see which files in `/etc` differ from the image:
-
-```sh
-d77-etc-diff
-```
-
-Each line says `changed`, `added` or `deleted`, then the path. To see the
-differences in one file (the image's version first):
-
-```sh
-d77-etc-diff sddm.conf.d/10-d77.conf
-```
-
-To put one file back as the image has it:
-
-```sh
-sudo d77-etc-diff --reset sddm.conf.d/10-d77.conf
-```
-
-`--reset` refuses the user accounts (`passwd`, `group`, `shadow`, …) and
-`fstab`, which must stay as this installation has them. Run `d77-etc-diff`
-with `sudo` to see every file, including the ones only root can read.
+Changes to `/etc` are kept, but a file you change stops following new
+versions of the image; `d77-etc-diff` shows and undoes those changes. See
+[What is kept](../system/persistence.md) for the details.
 
 ## Things that work differently
 

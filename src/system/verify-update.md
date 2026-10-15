@@ -159,7 +159,7 @@ sudo tail -n 20 /var/log/d77-boot-ok/current
   version on its own.
 - **A setting you changed stops the system from working.** Choose
   `d77void (factory /etc and /var, changes not kept)` in the GRUB menu, then
-  find and fix the file with `d77-etc-diff`; see
-  [What "kept" means for /etc](../getting-started/overview.md#what-kept-means-for-etc).
-- **You keep landing on the previous version without choosing it.** Note the
+  undo the change; see [Recovery](recovery.md#a-setting-stops-the-system-from-working).
+- **You keep landing on the previous version without choosing it.** See
+  [Recovery](recovery.md#you-keep-landing-on-the-previous-version). Note the
   output of steps 2 and 3 and of step 7, and report it.

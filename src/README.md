@@ -18,6 +18,7 @@ code and, where it says so, on real installations.
 - New to immutable systems? Read [What d77void Immutable is](getting-started/overview.md).
 - Want to know what happens when it updates? Read [A/B slots and updates](system/slots-ab.md).
 - Not sure an update went through? Follow [Checking an update](system/verify-update.md).
+- Something broke? Start with [Recovery](system/recovery.md) or [Common problems](troubleshooting/index.md).
 - Looking for a program? See [Where to install applications](applications/choosing-method.md).
 
 ## Not affiliated with Void Linux
