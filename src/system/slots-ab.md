@@ -45,7 +45,7 @@ previous version.
 ## How an update happens
 
 1. **Looking for a new version.** A system service, `d77-update`, looks for a
-   new version 10 minutes after each boot and then every 6 hours (30 minutes
+   new version 3 minutes after each boot and then every 6 hours (10 minutes
    after a failure, such as no network). Nothing is done in the live session
    or in a factory boot (see [The GRUB menu](#the-grub-menu)).
 2. **Downloading into the other slot.** If there is a newer version, it is
@@ -53,10 +53,19 @@ previous version.
    never touched. This only happens while the running slot is the confirmed
    one, so the version you can fall back to is never overwritten.
 
-   The download is about 3 GB. If the connection drops, or you switch the
-   computer off, it continues later from where it stopped.
-3. **Checking it.** Before the new slot is offered, its signature (minisign),
-   size and SHA-256 are checked against what was published. Anything that does
+   A system that is one or two versions behind downloads only what changed,
+   a *delta* of about 250 to 300 MB, and rebuilds the new image from the one
+   it is running, which it only reads. A system further behind downloads the
+   whole image, about 3 GB. If a delta is missing, damaged or does not give
+   the published image, it is thrown away and the whole image is downloaded
+   instead. If the connection drops, or you switch the computer off, the
+   download continues later from where it stopped.
+
+   Updating through a delta has been checked with the real images in tests;
+   it is not verified yet on a real installation.
+3. **Checking it.** Before the new slot is offered, the signature (minisign)
+   of the published manifest is checked, and so are the size and SHA-256 of
+   the image, whether it was downloaded or rebuilt from a delta. Anything that does
    not match is thrown away.
 4. **Getting it ready.** The kernel and initramfs are taken from the new
    image, the manifest is written last, and GRUB is asked to try the new slot

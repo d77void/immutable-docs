@@ -4,13 +4,14 @@ Problems seen on real installations, with what causes them and what to do.
 
 ## The update download is very slow, or keeps stopping
 
-Updates are about 3 GB and come from SourceForge, which often serves them at
-a few hundred KB/s and sometimes drops long connections
+A full update is about 3 GB; a system one or two versions behind downloads a
+delta of a few hundred MB instead. Both come from SourceForge, which often
+serves them at a few hundred KB/s and sometimes drops long connections
 (`Connection reset by peer` in the update log).
 
 Nothing needs to be done: the download continues from where it stopped, by
 itself. It retries for about 5 minutes and, if the connection is still down,
-tries again 30 minutes later. Switching the computer off is fine too; the
+tries again 10 minutes later. Switching the computer off is fine too; the
 next boot continues the same download.
 
 A wired connection helps. While a download is running, the computer does
@@ -20,7 +21,7 @@ To watch it, see step 5 of [Checking an update](../system/verify-update.md#5-whe
 
 ## No "Update ready" notice appeared
 
-- The first look of each boot waits 10 minutes, then every 6 hours. A
+- The first look of each boot waits 3 minutes, then every 6 hours. A
   download then takes a while.
 - The notice is shown once per session and stays until you close it. If it
   was closed, `cat /run/d77/update-ready` still shows the waiting version.

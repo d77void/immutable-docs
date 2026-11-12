@@ -99,12 +99,17 @@ To see a download in progress, list the partial file; run it again a minute
 later and the size should have grown:
 
 ```sh
-sudo ls -l /run/d77/disk/slots/*/root.sqfs.*.part
+sudo ls -l /run/d77/disk/slots/*/*.part
 ```
+
+A download of the whole image is `root.sqfs.<version>.part`; a delta is
+`delta.<version>.part`, much smaller. Once a delta has arrived, the image is
+rebuilt from it: in tests this took about 10 seconds on a fast disk, and it
+takes longer on a slow one.
 
 "No such file" means nothing is downloading: either there is nothing new, the
 download has finished, or it has not started yet (the first look of a boot
-waits 10 minutes).
+waits 3 minutes).
 
 ### 6. What the update service did
 
@@ -119,9 +124,16 @@ Each line starts with the time, in UTC. Common lines:
 | `current 20261015.1` | looked; nothing newer |
 | `downloading 20261018.1: 2712 MiB` | started downloading (systems on 20261015.1 or newer) |
 | `downloading 20261018.1: resuming at 600 of 2712 MiB` | continuing an interrupted download |
+| `downloading 20261025.1: delta from 20261018.1, 255 MiB instead of 2712 MiB` | started downloading a delta from the version you are running |
+| `downloading 20261025.1: delta from 20261018.1, resuming at 100 of 255 MiB` | continuing an interrupted delta download |
+| `downloading 20261025.1: rebuilding the image from 20261018.1` | the delta has arrived and the new image is being rebuilt from the running one |
+| `downloading 20261025.1: no delta from 20261018.1 on the server, getting the whole image` | there is no delta for your version any more; the whole image is downloaded as before |
+| `downloading 20261025.1: no room for the delta, getting the whole image` | there is not enough free space for the delta and the image; the whole image is downloaded as before |
+| `downloading 20261025.1: the delta arrived damaged, getting the whole image` | the delta failed its checksum and was thrown away; the whole image is downloaded as before |
+| `downloading 20261025.1: the delta did not give the published image, getting the whole image` | the rebuilt image did not match what was published and was thrown away; the whole image is downloaded as before |
 | `staged 20261018.1` | downloaded, checked and ready for the next boot |
 | `d77-update: slot A is not confirmed yet (d77_slot=B): not staging over the slot to fall back to` | the running slot is not the confirmed one, so nothing is downloaded |
-| `d77-update: …` (anything else) | an error, with its reason; the service tries again in 30 minutes |
+| `d77-update: …` (anything else) | an error, with its reason; the service tries again in 10 minutes |
 
 `sudo tail -f` instead of `sudo tail -n 20` keeps showing new lines as they
 arrive; press Ctrl+C to stop it. It never ends by itself.
