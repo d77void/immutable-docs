@@ -104,8 +104,9 @@ sudo ls -l /run/d77/disk/slots/*/*.part
 
 A download of the whole image is `root.sqfs.<version>.part`; a delta is
 `delta.<version>.part`, much smaller. Once a delta has arrived, the image is
-rebuilt from it: in tests this took about 10 seconds on a fast disk, and it
-takes longer on a slow one.
+rebuilt from it: on real installations the delta of about 115 MB took
+around a minute and a half to download and about 20 seconds to rebuild and
+check, and it takes longer on a slow connection or disk.
 
 "No such file" means nothing is downloading: either there is nothing new, the
 download has finished, or it has not started yet (the first look of a boot
