@@ -16,6 +16,7 @@ code and, where it says so, on real installations.
 ## Where to start
 
 - New to immutable systems? Read [What d77void Immutable is](getting-started/overview.md).
+- Ready to install? Follow [Installing](getting-started/installing.md).
 - Want to know what happens when it updates? Read [A/B slots and updates](system/slots-ab.md).
 - Not sure an update went through? Follow [Checking an update](system/verify-update.md).
 - Something broke? Start with [Recovery](system/recovery.md) or [Common problems](troubleshooting/index.md).

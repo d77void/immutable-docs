@@ -5,6 +5,7 @@
 # Getting started
 
 - [What d77void Immutable is](getting-started/overview.md)
+- [Installing](getting-started/installing.md)
 
 # The system
 
