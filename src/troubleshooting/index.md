@@ -54,9 +54,10 @@ are fixed by the first such version once it has been confirmed. Those
 versions also show **"Previous version in use"** whenever the running slot is
 not the confirmed one. See [Recovery](../system/recovery.md#you-keep-landing-on-the-previous-version).
 
-## `xbps-install` fails
+## `xbps-install` is not found, or fails
 
-Expected: the system's files and package database are read-only. Install the
+Expected: the image has no package manager (from version 20261124 on), and on
+older versions the system's files and package database are read-only. Install the
 program with Flatpak or inside a Distrobox container; see
 [Where to install applications](../applications/choosing-method.md).
 

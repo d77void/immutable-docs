@@ -116,8 +116,8 @@ Gear Lever can help with that.
 
 ## What does not work, and why
 
-- **`sudo xbps-install` on the system.** The system's files and package
-  database are read-only, so it fails. Use Distrobox for packages.
+- **`sudo xbps-install` on the system.** The image has no package manager,
+  and the system's files are read-only. Use Distrobox for packages.
 - **Copying a program into `/usr`** (for example with `sudo install … /usr/…`
   or `make install`). `/usr` is read-only.
 - **Installing into `/opt`.** It is writable, but emptied on every boot.

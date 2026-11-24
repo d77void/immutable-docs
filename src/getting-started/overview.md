@@ -25,11 +25,13 @@ are kept.
 | Installing software | `xbps-install` | Flatpak, Distrobox, AppImage |
 | Updating | `xbps-install -Su`, package by package | a whole new image, in the background |
 | If an update breaks something | fix it by hand | the previous version is still there |
-| Package manager on the installed system | yes | no: `xbps-install` fails on purpose |
+| Package manager on the installed system | yes | no |
 
-`xbps-install` is present in the image, but it cannot change anything: the
-system's files and the package database are read-only. That is expected, not
-an error. Use the methods in
+There is no package manager in the image, neither on the installed system
+nor in the live session: `xbps-install` does not exist (versions before
+20261124 still had it, but it could not change anything). The list of the
+packages that make up the image stays in `/var/db/xbps`, read-only. Use the
+methods in
 [Where to install applications](../applications/choosing-method.md) instead.
 
 ## What is read-only and what is kept
