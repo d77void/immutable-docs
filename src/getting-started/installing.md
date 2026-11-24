@@ -14,8 +14,9 @@
 | Memory | 2 GB | 4 GB |
 | Disk | 16 GB | 24 GB or more |
 
-- The disk is **wiped entirely**. Installing next to another system on the
-  same disk is not offered.
+- Plan for the **whole disk**: the supported choice in the installer is
+  **Erase disk**, which wipes it entirely. Installing next to another system
+  on the same disk is not supported.
 - On UEFI, **Secure Boot must be off**: the boot loader is not signed yet.
 - No network connection is needed to install.
 
@@ -34,7 +35,8 @@
    nothing is written to the disk until the installer runs.
 3. Double-click **Install d77void** on the desktop.
 4. Follow the steps: language, location and time zone, keyboard, disk
-   (**Erase disk** is the only choice), and your user and password.
+   (choose **Erase disk**; on an empty disk it is the only choice), and your
+   user and password.
 5. When the installer says **All done.**, restart and remove the stick.
 
 The live session has no package manager, and the installed system does not
@@ -64,3 +66,8 @@ either: see [What d77void Immutable is](overview.md).
 - Updates need nothing from you: three minutes after boot, and then every
   6 hours, the system looks for a newer image and downloads it in the
   background. See [A/B slots and updates](../system/slots-ab.md).
+
+---
+
+*Checked on 24 November 2026 against the code of version 20261124.1, and by
+installing that version in a UEFI virtual machine on an empty disk.*
